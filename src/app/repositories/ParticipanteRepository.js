@@ -9,22 +9,27 @@ class ParticipanteRepository {
 
         // Realizando uma consulta ASSINCRONA
         return new Promise((resolve, reject) => {
-            // Realizando consulta no DB 
+            // Realizando Preenchimento no DB 
             conexao.query(
                 sql_inserir_participante,
                 [nome_req, matricula_req, curso_req, campus_req, email_req,dataHoraRequisicao],
-                (erro, resultado) => {
+                (erro) => {
                     if (erro) {
                         return reject('Não foi possivel cadastrar !')
                     } else {
-                        // Transformando o resultado da Busca em um JSON 
-                        const consulta_JSON = JSON.parse(JSON.stringify(resultado.rows))
-                        console.log(consulta_JSON)
-                        return resolve(consulta_JSON)
+                        return resolve('Usuário cadastrado !')
                     }
                 })
         })
     }
+
+    update(nome_req, matricula_req,dataHoraRequisicao){
+
+        const sql1 = "UPDATE participante SET registro_saida = '2050-10-22 22:31:00' WHERE nome_participante ='Joao' and matricula = '22'"
+        const sql = "UPDATE participante SET ? WHERE nome_participante = $1 and matricula = $2 "
+    }
+
+    
 
 }
 

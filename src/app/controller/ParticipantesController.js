@@ -5,7 +5,7 @@ class ParticipanteController {
 
     // Cadastrar Participante
     async store(req, res) {
-        // console.log(req.body.evento)
+        // console.log(req.body)
         const dataHoraRequisicao = new Date().toLocaleString('pt-BR', {
             day: '2-digit',
             month: 'numeric',
@@ -14,16 +14,23 @@ class ParticipanteController {
             minute: '2-digit',
         });
 
-        const nome_req = req.body.evento.nome_user;
-        const matricula_req = req.body.evento.matricula;
-        const curso_req = req.body.evento.curso;
-        const campus_req = req.body.evento.campus;
-        const email_req = req.body.evento.email;
+        const nome_req = req.body.dados.nome_user;
+        const matricula_req = req.body.dados.matricula;
+        const curso_req = req.body.dados.curso;
+        const campus_req = req.body.dados.campus;
+        const email_req = req.body.dados.email;
         
-        console.log(dataHoraRequisicao)
+        // console.log(dataHoraRequisicao)
         const resultado_criacao = await ParticipanteRepository.create(nome_req, matricula_req, curso_req, campus_req, email_req,dataHoraRequisicao)
         res.json(resultado_criacao)
       
+    }
+    // Atualizar Dado do Usuario 
+    async update(req,res){
+        const nome_req = req.body.dados.nome_user;
+        const matricula_req = req.body.dados.matricula;
+
+        
     }
 
     // Verificar usuario
