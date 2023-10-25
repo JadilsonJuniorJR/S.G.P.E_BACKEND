@@ -5,7 +5,7 @@ import express from "express";
 import cors from "cors";
 
 // Importando Função
-import SelecaoController from "./app/controller/SelecaoController.js";
+import EventoController from "./app/controller/EventoController.js";
 import ParticipantesController from "./app/controller/ParticipantesController.js";
 
 // Inicializando o Express
@@ -20,10 +20,10 @@ app.use(cors());
 //Criando rotas (ENDPOINT)
 
 // Selecionando todos os eventos
-app.get('/evento/buscar_eventos', SelecaoController.index )
+app.get('/evento/buscar_eventos', EventoController.index )
 
 // Cadastrar Eventos
-app.post('/evento/cadastrar_evento', SelecaoController.store)
+app.post('/evento/cadastrar_evento', EventoController.store)
 
 
 // Cadastrar Usuario
