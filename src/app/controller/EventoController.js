@@ -1,4 +1,4 @@
-import SelecaoRepository from "../repositories/EventoRepository.js";
+import EventoRepository from "../repositories/EventoRepository.js";
 
 // Classe Responsavel por Chama os Metodos do CRUD 
 // Responsavel pelas respostas para os usuarios 
@@ -9,7 +9,7 @@ class EventoController {
     // Listar Tudo. Obs: é um metodo assicrono que esta aguardando o resultado do metodo SelecaoRepository.findAll()
     async index(req, res) {
         // Armazena o resultado da execução do metodo 
-        const resultado_busca = await SelecaoRepository.findAll()
+        const resultado_busca = await EventoRepository.findAll()
         res.json(resultado_busca)
     }
 
@@ -31,7 +31,7 @@ class EventoController {
         
         // console.log(req.body)
 
-        const resultado_criacao = await SelecaoRepository.create( nome_req, data_inicio, hora_inicio, data_termino, hora_termino, tolerancia, descricao_req)
+        const resultado_criacao = await EventoRepository.create( nome_req, data_inicio, hora_inicio, data_termino, hora_termino, tolerancia, descricao_req)
         res.json(resultado_criacao)
         // const {nome_req,data_inicio,hora_inicio,data_termino,hora_termino,descricao_req} = req.body.evento
         // console.log(descricao_req)

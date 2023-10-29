@@ -10,6 +10,17 @@ const conexao = new pg.Client(
         password: 'admin',
         database: 'SGPE'
     }
-);
+)
 conexao.connect()
+
+export const consulta = (sql, valores = '', mensagemReject) => {
+    return new Promise((resolve, reject, mensagemReject) => {
+        conexao.query(sql, valores, (erro,resultado) => {
+            if (erro) { return reject(mensagemReject) }
+            const retorno = JSON.parse(JSON.stringify(resultado))
+            // console.log(retorno.rows)
+            resolve(retorno)
+        })
+    })
+}
 export default conexao

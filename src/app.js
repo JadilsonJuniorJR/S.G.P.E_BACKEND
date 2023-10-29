@@ -31,8 +31,22 @@ app.post('/participante/cadastrar', ParticipantesController.store)
 
 
 // Confirmar Usuario
-app.post('/participante/confirmar', ParticipantesController.store)
+app.put('/participante/confirmar/:nome_user/:matricula', ParticipantesController.update)
 
+
+
+import qr from 'qr-image'
+
+
+app.get('/qrcode', (req, res) => {
+    console.log("Enviou")
+    const url = "https://www.google.com/"
+    const code = qr.image(url, { type: 'svg' })
+
+    res.type('svg');
+    code.pipe(res)
+    console.log("Imagem Gerada")
+})
 
 
 // Exportando a instancia do APP 
