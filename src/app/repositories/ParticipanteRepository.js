@@ -1,4 +1,4 @@
-import conexao, {consulta} from "../database/conexao.js";
+import {consulta} from "../database/conexao.js";
 
 class ParticipanteRepository {
 
@@ -49,27 +49,27 @@ class ParticipanteRepository {
         console.log(nome_req, matricula_req, dataHoraRequisicao)
         return consulta(sql_inserir_participante, [nome_req, matricula_req, dataHoraRequisicao], 'Não foi possivel Atualizar')
 
-        const sql1 = "UPDATE participante SET registro_saida = '2001-10-22 22:31:00' WHERE nome_participante=$1 and matricula = $2"
-        const sql_atualizar_participante = "UPDATE participante SET registro_saida = $3 WHERE nome_participante = $1 and matricula = $2"
-        const values = [dataHoraRequisicao, nome_req, matricula_req]
+        // const sql1 = "UPDATE participante SET registro_saida = '2001-10-22 22:31:00' WHERE nome_participante=$1 and matricula = $2"
+        // const sql_atualizar_participante = "UPDATE participante SET registro_saida = $3 WHERE nome_participante = $1 and matricula = $2"
+        // const values = [dataHoraRequisicao, nome_req, matricula_req]
 
         
 
-        console.log(nome_req, matricula_req, dataHoraRequisicao)
-        return new Promise((resolve, reject) => {
-            // Realizando Atualização no DB 
-            conexao.query(
-                sql_atualizar_participante,
-                [nome_req, matricula_req, dataHoraRequisicao],
-                (erro, resultado) => {
-                    if (erro) { return reject('Não foi possivel Atualizar !') }
+        // console.log(nome_req, matricula_req, dataHoraRequisicao)
+        // return new Promise((resolve, reject) => {
+        //     // Realizando Atualização no DB 
+        //     conexao.query(
+        //         sql_atualizar_participante,
+        //         [nome_req, matricula_req, dataHoraRequisicao],
+        //         (erro, resultado) => {
+        //             if (erro) { return reject('Não foi possivel Atualizar !') }
 
-                    const rows = JSON.parse(JSON.stringify(resultado))
-                    console.log(rows)
-                    return resolve(rows)
+        //             const rows = JSON.parse(JSON.stringify(resultado))
+        //             console.log(rows)
+        //             return resolve(rows)
 
-                })
-        })
+        //         })
+        // })
     }
 
 
