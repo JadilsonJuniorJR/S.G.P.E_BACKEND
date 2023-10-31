@@ -7,7 +7,7 @@ import cors from "cors";
 // Importando Função
 import EventoController from "./app/controller/EventoController.js";
 import ParticipantesController from "./app/controller/ParticipantesController.js";
-
+import QrcodeController from "./app/controller/QrcodeController.js";
 // Inicializando o Express
 const app = express();
 
@@ -31,22 +31,22 @@ app.post('/participante/cadastrar', ParticipantesController.store)
 
 
 // Confirmar Usuario
-app.put('/participante/confirmar/:nome_user/:matricula', ParticipantesController.update)
+app.post('/qrcode/gerar', QrcodeController.store)
 
 
 
-import qr from 'qr-image'
+// import qr from 'qr-image'
 
 
-app.get('/qrcode', (req, res) => {
-    console.log("Enviou")
-    const url = "https://www.google.com/"
-    const code = qr.image(url, { type: 'svg' })
+// app.get('/qrcode', (req, res) => {
+//     console.log("Enviou")
+//     const url = "https://www.google.com/"
+//     const code = qr.image(url, { type: 'svg' })
 
-    res.type('svg');
-    code.pipe(res)
-    console.log("Imagem Gerada")
-})
+//     res.type('svg');
+//     code.pipe(res)
+//     console.log("Imagem Gerada")
+// })
 
 
 // Exportando a instancia do APP 
