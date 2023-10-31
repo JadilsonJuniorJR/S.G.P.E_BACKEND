@@ -7,6 +7,13 @@
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "pg": "^8.11.3",
-    "qr-image": "^3.2.0"
-  }
+    "qrcode": "^1.5.3"
+  },
+  "name": "sgpe-backend",
+  "description": "Repositório com a estrutura do Backend do S.G.P.E",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "author": "Jadilson, Leandro",
+  "license": "ISC"
 }
