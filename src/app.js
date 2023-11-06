@@ -8,6 +8,8 @@ import cors from "cors";
 import EventoController from "./app/controller/EventoController.js";
 import ParticipantesController from "./app/controller/ParticipantesController.js";
 import QrcodeController from "./app/controller/QrcodeController.js";
+
+import ArquivarEvento from "./app/services/ArquivarEventos.js"
 // Inicializando o Express
 const app = express();
 
@@ -25,13 +27,14 @@ app.get('/evento/buscar_eventos', EventoController.index )
 // Cadastrar Eventos
 app.post('/evento/cadastrar_evento', EventoController.store)
 
+app.get('/evento/arquivar_evento',  ArquivarEvento.arquivar)
 
 // Cadastrar Usuario
 app.post('/participante/cadastrar', ParticipantesController.store)
 
 
 // Confirmar Usuario
-app.post('/qrcode/gerar', QrcodeController.store)
+app.post('/qrcode/gerar', QrcodeController.create)
 
 
 

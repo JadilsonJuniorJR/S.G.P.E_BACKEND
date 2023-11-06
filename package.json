@@ -6,6 +6,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "json2csv": "^6.0.0-alpha.2",
     "pg": "^8.11.3",
     "qrcode": "^1.5.3"
   },
@@ -13,7 +14,6 @@
   "description": "Repositório com a estrutura do Backend do S.G.P.E",
   "version": "1.0.0",
   "main": "server.js",
-  "devDependencies": {},
   "author": "Jadilson, Leandro",
   "license": "ISC"
 }
