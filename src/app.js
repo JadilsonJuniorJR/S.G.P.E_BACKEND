@@ -9,7 +9,7 @@ import EventoController from "./app/controller/EventoController.js";
 import ParticipantesController from "./app/controller/ParticipantesController.js";
 import QrcodeController from "./app/controller/QrcodeController.js";
 
-import ArquivarEvento from "./app/services/ArquivarEventos.js"
+import ListarEvento from "./app/services/ListarEvento.js"
 // Inicializando o Express
 const app = express();
 
@@ -27,29 +27,21 @@ app.get('/evento/buscar_eventos', EventoController.index )
 // Cadastrar Eventos
 app.post('/evento/cadastrar_evento', EventoController.store)
 
-app.get('/evento/arquivar_evento',  ArquivarEvento.arquivar)
+// Gerar Lista CSV Eventos
+app.get('/evento/listar_evento',  ListarEvento.evento)
+
+// Gerar Lista CSV Eventos
+app.get('/evento/listar_participantes',  ListarEvento.participante)
 
 // Cadastrar Usuario
 app.post('/participante/cadastrar', ParticipantesController.store)
 
+//Atualizar Usuarios
+app.put('/participante/confirmar/:nome/:matricula', ParticipantesController.update)
+
 
 // Confirmar Usuario
 app.post('/qrcode/gerar', QrcodeController.create)
-
-
-
-// import qr from 'qr-image'
-
-
-// app.get('/qrcode', (req, res) => {
-//     console.log("Enviou")
-//     const url = "https://www.google.com/"
-//     const code = qr.image(url, { type: 'svg' })
-
-//     res.type('svg');
-//     code.pipe(res)
-//     console.log("Imagem Gerada")
-// })
 
 
 // Exportando a instancia do APP 
