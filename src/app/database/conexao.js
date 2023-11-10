@@ -15,10 +15,11 @@ conexao.connect()
 
 export const consulta = (sql, valores = '', mensagemReject) => {
     return new Promise((resolve, reject, mensagemReject) => {
+        console.log(valores)
         conexao.query(sql, valores, (erro,resultado) => {
             if (erro) { return reject(mensagemReject) }
             const retorno = JSON.parse(JSON.stringify(resultado))
-            // console.log(retorno.rows)
+            console.log(retorno.rows)
             resolve(retorno)
         })
     })

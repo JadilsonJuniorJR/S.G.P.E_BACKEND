@@ -45,9 +45,6 @@ class EventoRepository {
                 }
             })
         })
-
-
-
     }
     // Atualizar 
     update() {

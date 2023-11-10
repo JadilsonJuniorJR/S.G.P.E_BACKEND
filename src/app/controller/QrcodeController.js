@@ -6,7 +6,7 @@ class QrcodeController {
     const nome_req = req.body.dados.nome_evento;
     const id_req = req.body.dados.id_evento;
     const url= `http://localhost:3000/inicio/Cadastrar_usuario`
-    const combinedData = `${url}?id:${id_req}`;
+    const combinedData = `${url}?id=${id_req}`;
     qrcode.toDataURL(combinedData, (err, qr) => {
       if (err) {
         res.status(500).json({ error: 'Erro na geração do QR Code' });
