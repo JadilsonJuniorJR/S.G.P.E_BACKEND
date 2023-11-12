@@ -30,7 +30,7 @@ app.post('/evento/cadastrar_evento', EventoController.store)
 // Gerar Lista CSV Eventos
 app.get('/evento/listar_evento',  ListarEvento.evento)
 
-// Gerar Lista CSV Eventos
+// Gerar Lista CSV Participante
 app.get('/evento/listar_participantes',  ListarEvento.participante)
 
 // Cadastrar Usuario

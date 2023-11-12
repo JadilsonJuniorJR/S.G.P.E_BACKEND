@@ -13,14 +13,14 @@ const conexao = new pg.Client(
 )
 conexao.connect()
 
-export const consulta = (sql, valores = '', mensagemReject) => {
-    return new Promise((resolve, reject, mensagemReject) => {
-        console.log(valores)
+export const consulta = (sql, valores= '', mensagemReject) => {
+    console.log("Chegou aqui")
+    return new Promise((resolve, reject) => {
         conexao.query(sql, valores, (erro,resultado) => {
             if (erro) { return reject(mensagemReject) }
-            const retorno = JSON.parse(JSON.stringify(resultado))
-            console.log(retorno.rows)
-            resolve(retorno)
+            const retorno = JSON.parse(JSON.stringify(resultado.rows))
+            // console.log(retorno)
+            return resolve(retorno)
         })
     })
 }
