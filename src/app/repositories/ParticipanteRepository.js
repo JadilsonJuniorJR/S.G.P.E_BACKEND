@@ -38,9 +38,20 @@ class ParticipanteRepository {
     }
 
     // Atualizando Saida do usuario
-    update(nome_req, matricula_req, dataHoraRequisicao) {
-        const sql_inserir_participante = "UPDATE participante SET registro_saida = $3 WHERE nome_participante = $1 and matricula = $2"
-        return consulta(sql_inserir_participante, [nome_req, matricula_req, dataHoraRequisicao], 'Não foi possivel Atualizar')
+    update(nome_req, matricula_req, dataHoraRequisicao,validar_participacao) {
+        console.log('DENTRO DO UPDATE')
+        // CASO O PARTICIPANTE A VALIDAÇÃO DO PARTICIPANTE SEJA VERDADEIRA ATUALIZAR O CAMPO PARTICIPAÇÃO
+        if(validar_participacao){
+            console.log("PARTICIPAÇAO VALIDADA")
+            console.log( nome_req, matricula_req, dataHoraRequisicao,validar_participacao)
+            const sql_inserir_participante = "UPDATE participante SET participacao = $3 WHERE nome_participante = $1 and matricula = $2"
+            return consulta(sql_inserir_participante, [nome_req, matricula_req, validar_participacao], 'Não foi possivel Atualizar')
+        }else{
+           console.log( nome_req, matricula_req, dataHoraRequisicao,validar_participacao)
+            const sql_inserir_participante = "UPDATE participante SET participacao = $3, registro_saida = $4 WHERE nome_participante = $1 and matricula = $2"
+            return consulta(sql_inserir_participante, [nome_req, matricula_req,validar_participacao, dataHoraRequisicao], 'Não foi possivel Atualizar')
+        }
+       
     }
 
 }
