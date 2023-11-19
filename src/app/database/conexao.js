@@ -14,7 +14,6 @@ const conexao = new pg.Client(
 conexao.connect()
 
 export const consulta = (sql, valores= '', mensagemReject) => {
-    console.log("Chegou aqui")
     return new Promise((resolve, reject) => {
         conexao.query(sql, valores, (erro,resultado) => {
             if (erro) { return reject(mensagemReject) }

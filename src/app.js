@@ -36,11 +36,11 @@ app.get('/evento/listar_participantes',  ListarEvento.participante)
 // Cadastrar Usuario
 app.post('/participante/cadastrar', ParticipantesController.store)
 
-//Atualizar Usuarios
+//Confirmar Usuario
 app.put('/participante/confirmar/:nome/:matricula', ParticipantesController.update)
 
 
-// Confirmar Usuario
+// Gerar QRCODE Entrada
 app.post('/qrcode/gerar', QrcodeController.create)
 
 
