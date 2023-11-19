@@ -1,4 +1,4 @@
-import conexao from "../database/conexao.js";
+import {consulta} from "../database/conexao.js";
 
 class EventoRepository {
 
@@ -7,7 +7,6 @@ class EventoRepository {
         const sql_inserir_evento = "INSERT INTO evento (nome_evento,data_inicio,hora_inicio, data_termino, hora_termino, tolerancia,descricao) VALUES ($1,$2,$3,$4,$5,$6,$7)"
 
         return consulta(sql_inserir_evento, [nome_req, data_inicio, hora_inicio, data_termino, hora_termino, tolerancia, descricao_req], 'Não foi possivel cadastrar!')
-
 
         // Realizando uma consulta ASSINCRONA
         return new Promise((resolve, reject) => {
@@ -33,10 +32,9 @@ class EventoRepository {
 
     // Buscar Todos 
     findAll() {
-
         const sql_consultar = "SELECT * FROM evento ";
         // Realizando uma consulta ASSINCRONA
-        return consulta(sql_consultar, '', 'Não foi possível localizar!')
+        return consulta(sql_consultar,'' ,'Não foi possível localizar!')
 
         return new Promise((resolve, reject) => {
             conexao.query(sql_consultar, (erro, resultado) => {
@@ -52,15 +50,21 @@ class EventoRepository {
             })
         })
     }
+
+    // Buscar Evento Especifico
+    findById(id_evento) {
+        const sql = "SELECT * FROM evento WHERE id_evento =$1"
+        return consulta(sql, [id_evento], 'Não foi possivel Localizar')
+    }
+
     // Atualizar 
     update() {
-
+        
     }
     // Deletar
     delete() {
 
     }
-
 
 }
 
