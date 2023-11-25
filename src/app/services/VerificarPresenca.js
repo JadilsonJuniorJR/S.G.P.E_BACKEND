@@ -23,11 +23,11 @@ class VerificarPresenca {
 
         // RESGATANDO OS DADOS DO EVENTO (DATA, HORA E TOLERANCIA)
         const entrada_evento = moment(resposta_consulta[0].data_inicio).format('YYYY-MM-DD');
-        const saida_evento = moment(resposta_consulta[0].data_termino).local().format('DD-MM-YYYY');
+        const saida_evento = moment(resposta_consulta[0].data_termino).format('YYYY-MM-DD');
         console.log("DATA ENTRADA EVENTO: " + entrada_evento)
 
         const hora_entrada_evento = moment(resposta_consulta[0].hora_inicio, 'HH:mm')
-        const hora_termino_evento = resposta_consulta[0].hora_termino;
+        const hora_termino_evento = moment(resposta_consulta[0].hora_termino, 'HH:mm')
 
         const tolerancia_evento = moment(resposta_consulta[0].tolerancia, 'mm')
         const minutosParaAdicionar = tolerancia_evento.minutes()
@@ -37,45 +37,30 @@ class VerificarPresenca {
         // DEFENINDO A ENTRADA COM O TEMPO DE TOLERANCIA
         // Adicionando minutos no Objeto 
         const entrada_tolerancia_evento = hora_entrada_evento.add(minutosParaAdicionar, 'minutes')
-        const entrada_tolerancia_evento_objeto = moment(entrada_tolerancia_evento, 'minutes');
+        const saida_tolerancia_evento = hora_termino_evento.add(minutosParaAdicionar, 'minutes')
 
-        console.log("ENTRADA TOLERANCIA CONVERTIDO MOMENT")
-        console.log(entrada_tolerancia_evento)
-        console.log(" ")
-        console.log("TOLERTANCIA")
-        console.log("Hora com tolerancia entrada FORMATADO: " + entrada_tolerancia_evento.format('HH:mm'))
-        console.log("Hora que o partipante entrou: " + entrada_participante[1])
-
-
-
+        // HORA QUE O PARTICIPANTE ENTROU E SAIU
         const entrada_participante_Objeto = moment(entrada_participante[1], 'HH:mm')
-
-
-
+        const saida_participante_Objeto = moment(saida_participante[1], 'HH:mm')
+       
 
         // Verifica se a data de presença confere com a data de realização do evento
         if (moment(entrada_participante[0]).isSame(entrada_evento)) {
             console.log("Dia certo")
             // Verifica se a hora que o Participante chegou é igual ou inferior da Hora permitida (com a tolerancia aplicada) 
-            if (entrada_participante_Objeto.isSameOrBefore(entrada_tolerancia_evento)) {
+            if ((entrada_participante_Objeto.isSameOrBefore(entrada_tolerancia_evento)&& (saida_participante_Objeto.isSameOrBefore(saida_tolerancia_evento))) ) {
                 console.log("Chegou igual ou antes da Hora")
                 validar_participacao = true
                 await ParticipanteRepository.update(participante[0].nome_participante, participante[0].matricula, saida_participante, validar_participacao)
-                console.log("*/*/*/*/*/*/*/*/*//*/*/*/*")
             } else {
                 console.log("Chegou Atrasado")
                 validar_participacao = false
                 await ParticipanteRepository.update(participante[0].nome_participante, participante[0].matricula, saida_participante, validar_participacao)
-                console.log("HORA ERRADA")
-                console.log("*/*/*/*/*/*/*/*/*//*/*/*/*")
             }
 
         } else {
             validar_participacao = false
-            console.log(validar_participacao)
-            console.log("DIA ERRADO")
             await ParticipanteRepository.update(participante[0].nome_participante, participante[0].matricula, saida_participante, validar_participacao)
-            console.log("*/*/*/*/*/*/*/*/*//*/*/*/*")
         }
 
     }

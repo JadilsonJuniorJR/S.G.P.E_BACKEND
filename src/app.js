@@ -39,7 +39,6 @@ app.post('/participante/cadastrar', ParticipantesController.store)
 //Confirmar Usuario
 app.put('/participante/confirmar/:nome/:matricula', ParticipantesController.update)
 
-
 // Gerar QRCODE Entrada
 app.post('/qrcode/gerar', QrcodeController.create)
 

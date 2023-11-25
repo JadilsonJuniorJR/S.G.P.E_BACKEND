@@ -54,8 +54,7 @@ class ParticipanteController {
         let resposta_consulta = await ParticipanteRepository.findById(nome_req, matricula_req)
         let validar_participacao = false
         // console.log("Resposta Consulta")
-        console.log(resposta_consulta)
-        console.log(resposta_consulta[0].participacao)
+     
         // console.log("Resposta Consulta Linhas")
         // console.log(resposta_consulta.length)
 
