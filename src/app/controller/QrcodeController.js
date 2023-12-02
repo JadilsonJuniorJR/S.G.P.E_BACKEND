@@ -1,10 +1,23 @@
 import qrcode from 'qrcode'
+import crypto from 'crypto'
+
 class QrcodeController {
 
-  create(req, res){
+  create(req, res) {
     const id_req = req.body.dados.id_evento;
-    const url= `http://localhost:3000/inicio/Cadastrar_usuario`
-    const combinedData = `${url}?id=${id_req}`;
+    const opc = req.body.dados.opc
+    console.log(opc)
+    // CRIANDO E CALCULANDO UM HASH
+    const hash = crypto.createHash('sha256').update(id_req).digest('hex');
+    console.log(hash)
+    let url
+    if(opc == 1){
+      url = `http://localhost:3000/inicio/inscricao_participante`
+    }else{
+      url = `http://localhost:3000/inicio/confirmacao_participante`
+    }
+
+    const combinedData = `${url}?id=${hash}`;
     qrcode.toDataURL(combinedData, (err, qr) => {
       if (err) {
         res.status(500).json({ error: 'Erro na geração do QR Code' });

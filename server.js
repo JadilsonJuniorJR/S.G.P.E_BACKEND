@@ -3,6 +3,9 @@
 // Importando o APP 
 import app from './src/app.js'
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 // Inicializando a Porta
 const PORT = process.env.port || 8080;
 

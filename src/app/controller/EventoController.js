@@ -1,10 +1,8 @@
 import EventoRepository from "../repositories/EventoRepository.js";
 
-// Classe Responsavel por Chama os Metodos do CRUD 
+// Classe Responsavel por Chama os Metodos do CRUD do Evento
 // Responsavel pelas respostas para os usuarios 
 class EventoController {
-
-
 
     // Listar Tudo. Obs: é um metodo assicrono que esta aguardando o resultado do metodo SelecaoRepository.findAll()
     async index(req, res) {
@@ -17,7 +15,7 @@ class EventoController {
     show(){
 
     }
-
+ 
     // Criar Evento
     async store(req, res) {
         // console.log(req.body)

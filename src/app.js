@@ -28,10 +28,10 @@ app.get('/evento/buscar_eventos', EventoController.index )
 app.post('/evento/cadastrar_evento', EventoController.store)
 
 // Gerar Lista CSV Eventos
-app.get('/evento/listar_evento',  ListarEvento.evento)
+app.post('/evento/listar_evento',  ListarEvento.evento)
 
 // Gerar Lista CSV Participante
-app.get('/evento/listar_participantes',  ListarEvento.participante)
+app.post('/evento/listar_participantes',  ListarEvento.participante)
 
 // Cadastrar Usuario
 app.post('/participante/cadastrar', ParticipantesController.store)
@@ -42,7 +42,7 @@ app.put('/participante/confirmar/:nome/:matricula', ParticipantesController.upda
 // Gerar QRCODE Entrada
 app.post('/qrcode/gerar', QrcodeController.create)
 
-
+app.post('/qrcode/gerar_saida', QrcodeController.create)
 // Exportando a instancia do APP 
 export default app
 

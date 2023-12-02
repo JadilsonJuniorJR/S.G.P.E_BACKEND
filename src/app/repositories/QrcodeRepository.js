@@ -9,7 +9,6 @@ class QrcodeRepository {
 
     // Procurando Usuario
     findById(nome_req, matricula_req) {
-        const sql2 = "SELECT * FROM participante WHERE nome_participante='Joao' and matricula = '1'" 
         const sql = "SELECT * FROM participante WHERE nome_participante=$1 and matricula =$2" 
         return consulta(sql,[nome_req, matricula_req], 'Não foi possivel Localizar')
     }

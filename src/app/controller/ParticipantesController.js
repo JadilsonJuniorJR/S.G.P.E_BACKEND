@@ -2,6 +2,7 @@
 import moment from "moment-timezone";
 import ParticipanteRepository from "../repositories/ParticipanteRepository.js";
 import VerificarPresenca from "../services/VerificarPresenca.js";
+import EventoRepository from "../repositories/EventoRepository.js";
 // Classe Responsavel por Chama os Metodos do CRUD 
 // Responsavel pelas respostas para os usuarios 
 class ParticipanteController {
@@ -27,11 +28,23 @@ class ParticipanteController {
         // console.log(req.body)
         const nome_req = req.body.dados.nome_user;
         const matricula_req = req.body.dados.matricula;
-        const id_evento_req = (req.body.dados.id_evento);
+        let id_evento_req = req.body.dados.id_evento;
+        console.log(id_evento_req.length)
         const curso_req = req.body.dados.curso;
         const campus_req = req.body.dados.campus;
         const email_req = req.body.dados.email;
         const dataHoraRequisicao = new Date().toLocaleString('pt-BR', { day: '2-digit', month: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' })
+
+        if (id_evento_req.length > 5) {
+            const resposta_consulta = await EventoRepository.findById(id_evento_req, '5')
+            if (resposta_consulta.rowCount == 0) {
+                res.status(404).json({ Erro: 'Evento não localizado no sistema!' })
+            } else {
+                console.log(resposta_consulta[0].id_evento)
+                id_evento_req = resposta_consulta[0].id_evento
+                console.log(id_evento_req)
+            }
+        }
 
         try {
             const resultado_criacao = await ParticipanteRepository.create(nome_req, matricula_req, curso_req, campus_req, email_req, dataHoraRequisicao, id_evento_req)
@@ -54,7 +67,7 @@ class ParticipanteController {
         let resposta_consulta = await ParticipanteRepository.findById(nome_req, matricula_req)
         let validar_participacao = false
         // console.log("Resposta Consulta")
-     
+
         // console.log("Resposta Consulta Linhas")
         // console.log(resposta_consulta.length)
 
@@ -68,7 +81,7 @@ class ParticipanteController {
         } else if (resposta_consulta[0].participacao == true || resposta_consulta[0].participacao == false) {
             console.log("USUARIO JÁ CADASTRADO")
             res.status(409).send("USUARIO JÁ CADASTRADO")
-        }else {
+        } else {
             // CASO O USUARIO AINDA NÃO CONFIRMOU A PRESENÇA É REALIZADO UMA ATUALIZAÇÃO NA DATA, HORA DE SAIDA E CAMPO PARTICIPAÇÃO
             // TAMBÉM É VERIFICADO A VALIDAÇÃO DE PRESENCIA
             validar_participacao = false
