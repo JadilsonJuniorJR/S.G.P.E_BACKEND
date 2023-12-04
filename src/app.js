@@ -21,7 +21,7 @@ app.use(cors());
 
 
 //Criando rotas (ENDPOINT)
-
+app.get('/')
 app.post('/login',UsuarioController.show)
 
 // Selecionando todos os eventos
