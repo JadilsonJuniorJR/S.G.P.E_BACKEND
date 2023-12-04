@@ -18,7 +18,6 @@ export const consulta = (sql, valores= ' ', mensagemReject) => {
         conexao.query(sql, valores, (erro,resultado) => {
             if (erro) { return reject(mensagemReject) }
             const retorno = JSON.parse(JSON.stringify(resultado.rows))
-            // console.log(retorno)
             return resolve(retorno)
         })
     })

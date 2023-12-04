@@ -10,6 +10,7 @@ import ParticipantesController from "./app/controller/ParticipantesController.js
 import QrcodeController from "./app/controller/QrcodeController.js";
 
 import ListarEvento from "./app/services/ListarEvento.js"
+import UsuarioController from "./app/controller/UsuarioController.js";
 // Inicializando o Express
 const app = express();
 
@@ -20,6 +21,8 @@ app.use(cors());
 
 
 //Criando rotas (ENDPOINT)
+
+app.post('/login',UsuarioController.show)
 
 // Selecionando todos os eventos
 app.get('/evento/buscar_eventos', EventoController.index )
