@@ -21,7 +21,7 @@ app.use(cors());
 
 
 //Criando rotas (ENDPOINT)
-app.get('/',()=>{console.log("Just got a request!")
+app.get('/',(req,res)=>{console.log("Just got a request!")
 res.send('Yo!')})
 
 app.post('/login',UsuarioController.show)
