@@ -12,7 +12,7 @@ class QrcodeController {
     console.log(hash)
     let url
     if(opc == 1){
-      url = `http://localhost:3000/inicio/inscricao_participante`
+      url = `https://master--magenta-squirrel-060088.netlify.app/inicio/inscricao_participante`
     }else{
       url = `http://localhost:3000/inicio/confirmacao_participante`
     }
