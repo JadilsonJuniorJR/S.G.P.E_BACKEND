@@ -14,8 +14,9 @@ class VerificarPresenca {
         let entrada_participante = moment(participante[0].registro_entrada).format('YYYY-MM-DD HH:mm').split(' ');
         const saida_participante = moment(participante[0].registro_saida).format('YYYY-MM-DD HH:mm').split(' ');
         let validar_participacao = participante[0].participacao
-
-        console.log("DATA ENTRADA: ", moment(entrada_participante[0],'DD-MM-YYYY'))
+        let data_entrada =  moment(entrada_participante[0]).format('YYYY-MM-DD')
+        console.log("DATA ENTRADA: ", data_entrada)
+        console.log("DATA ENTRADA: ", data_entrada.format('YYYY-MM-DD'))
         console.log("HORA ENTRADA: ", entrada_participante[1])
         console.log("REGISTRO SAIDA: ", saida_participante[1])
         console.log("DATA SAIDA: ", saida_participante[0])
