@@ -5,9 +5,9 @@ class VerificarPresenca {
 
     async verificar(participante) {
         // REALIZA A BUSCA DO EVENTO DO USUARIO INFORMADO
-        const resposta_consulta = await EventoRepository.findById(participante[0].fk_id_evento)
+        const resposta_consulta = await EventoRepository.findById(participante[0].fk_id_evento,'1')
         console.log("PARTICIPANTE")
-        console.log(participante)
+        console.log(participante[0])
 
 
         // RESGATANDO OS DADOS DO USUARIO DOS CAMPOS DE ENTRADA, SAIDA (DATA,HORA), E PARTICIPAÇÃO
