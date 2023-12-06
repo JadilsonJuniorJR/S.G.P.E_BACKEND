@@ -61,7 +61,7 @@ class ParticipanteController {
     // Atualizar Dado do Usuario 
     async update(req, res) {
 
-        let dataHoraRequisicao = moment().tz('America/Sao_Paulo').format('DD-MM-YYYY HH:mm')
+        let dataHoraRequisicao = moment().tz('America/Sao_Paulo').format('YYYY-MM-DD HH:mm')
         // const dataHoraRequisicao = new Date().toLocaleString('pt-BR', { day: '2-digit', month: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' })
         const nome_req = req.params.nome;
         const matricula_req = req.params.matricula;
