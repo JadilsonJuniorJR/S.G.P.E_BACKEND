@@ -14,7 +14,7 @@ class QrcodeController {
     if(opc == 1){
       url = `https://master--magenta-squirrel-060088.netlify.app/inicio/inscricao_participante`
     }else{
-      url = `http://localhost:3000/inicio/confirmacao_participante`
+      url = `https://master--magenta-squirrel-060088.netlify.app/inicio/confirmacao_participante`
     }
 
     const combinedData = `${url}?id=${hash}`;
@@ -29,21 +29,7 @@ class QrcodeController {
   }
 
 
-  // store(req, res) {
-  //   const nome_req = req.body.dados.nome_evento;
-  //   const id_req = req.body.dados.id_evento;
-
-  //   qrcode.toFile('qrcode.png', combinedData, (err) => {
-  //     if (err) {
-  //       console.error(err);
-  //     } else {
-  //       console.log('QR code salvo como qrcode.png');
-  //     }
-  //   });
-
-  // }
-
 }
 
-// Padrao Singleton
+
 export default new QrcodeController()
