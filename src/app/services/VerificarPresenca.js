@@ -11,13 +11,14 @@ class VerificarPresenca {
 
 
         // RESGATANDO OS DADOS DO USUARIO DOS CAMPOS DE ENTRADA, SAIDA (DATA,HORA), E PARTICIPAÇÃO
-        const entrada_participante = moment(participante[0].registro_entrada).format('YYYY-MM-DD HH:mm').split(' ');
+        let entrada_participante = moment(participante[0].registro_entrada).format('YYYY-MM-DD HH:mm').split(' ');
         const saida_participante = moment(participante[0].registro_saida).format('YYYY-MM-DD HH:mm').split(' ');
         let validar_participacao = participante[0].participacao
 
-        console.log("DATA ENTRADA: ", moment(entrada_participante[0],'DD-MM-YYYY').format('DD-MM-YYYY'))
+        console.log("DATA ENTRADA: ", moment(entrada_participante[0],'DD-MM-YYYY'))
         console.log("HORA ENTRADA: ", entrada_participante[1])
         console.log("REGISTRO SAIDA: ", saida_participante[1])
+        console.log("DATA SAIDA: ", saida_participante[0])
 
         console.log("EVENTO")
         console.log(resposta_consulta)
