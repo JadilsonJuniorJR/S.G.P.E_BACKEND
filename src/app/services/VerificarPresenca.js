@@ -40,11 +40,16 @@ class VerificarPresenca {
         const entrada_tolerancia_evento = hora_entrada_evento.add(minutosParaAdicionar, 'minutes')
         const saida_tolerancia_evento = hora_termino_evento.add(minutosParaAdicionar, 'minutes')
 
+        console.log("Entrada com tolerancia: ")
+        console.log(entrada_tolerancia_evento)
+        console.log("Saida com tolerancia: ")
+        console.log(saida_tolerancia_evento)
         // HORA QUE O PARTICIPANTE ENTROU E SAIU
         const entrada_participante_Objeto = moment(entrada_participante[1], 'HH:mm')
         const saida_participante_Objeto = moment(saida_participante[1], 'HH:mm')
        
-
+        console.log("Objeto entrada: ")
+        console.log(entrada_participante_Objeto)
         // Verifica se a data de presença confere com a data de realização do evento
         if (moment(entrada_participante[0]).isSame(entrada_evento)) {
             console.log("Dia certo")
