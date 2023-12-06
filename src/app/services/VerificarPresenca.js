@@ -50,6 +50,15 @@ class VerificarPresenca {
        
         console.log("Objeto entrada: ")
         console.log(entrada_participante_Objeto)
+
+        console.log('')
+        console.log('')
+        console.log('Entrada Participante')
+        console.log(entrada_participante[0])
+        console.log('Entrada Evento')
+        console.log(entrada_evento)
+        console.log('')
+
         // Verifica se a data de presença confere com a data de realização do evento
         if (moment(entrada_participante[0]).isSame(entrada_evento)) {
             console.log("Dia certo")
