@@ -27,9 +27,8 @@ class EventoController {
         const tolerancia = req.body.evento.tolerancia;
         const descricao_req = req.body.evento.descricao;
         
-        // console.log(req.body)
-
         const resultado_criacao = await EventoRepository.create( nome_req, data_inicio, hora_inicio, data_termino, hora_termino, tolerancia, descricao_req)
+        const criando_hash = await EventoRepository.update(nome_req,data_inicio)
         res.json(resultado_criacao)
         // const {nome_req,data_inicio,hora_inicio,data_termino,hora_termino,descricao_req} = req.body.evento
         // console.log(descricao_req)
