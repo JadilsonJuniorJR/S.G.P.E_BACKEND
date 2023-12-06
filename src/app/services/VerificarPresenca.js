@@ -55,6 +55,8 @@ class VerificarPresenca {
         console.log('')
         console.log('Entrada Participante')
         console.log(entrada_participante[0])
+        console.log(entrada_participante)
+        console.log(entrada_participante[0].format('YYYY-MM-DD'))
         console.log('Entrada Evento')
         console.log(entrada_evento)
         console.log('')
@@ -74,6 +76,7 @@ class VerificarPresenca {
             }
 
         } else {
+            console.log("DATA ERRADA")
             validar_participacao = false
             await ParticipanteRepository.update(participante[0].nome_participante, participante[0].matricula, saida_participante, validar_participacao)
         }
