@@ -20,7 +20,7 @@ class VerificarPresenca {
         console.log("REGISTRO SAIDA: ", saida_participante[1])
 
         console.log("EVENTO")
-        console.log(resposta_consulta[0])
+        console.log(resposta_consulta)
 
         // RESGATANDO OS DADOS DO EVENTO (DATA, HORA E TOLERANCIA)
         const entrada_evento = moment(resposta_consulta[0].data_inicio).format('YYYY-MM-DD');

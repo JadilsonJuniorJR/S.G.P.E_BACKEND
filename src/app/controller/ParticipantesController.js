@@ -33,8 +33,10 @@ class ParticipanteController {
         const curso_req = req.body.dados.curso;
         const campus_req = req.body.dados.campus;
         const email_req = req.body.dados.email;
-        const dataHoraRequisicao = new Date().toLocaleString('pt-BR', { day: '2-digit', month: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' })
-
+        // const dataHoraRequisicao = new Date().toLocaleString('pt-BR', { day: '2-digit', month: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' })
+        const dataHoraRequisicao = moment().tz('America/Sao_Paulo').format('DD-MM-YYYY HH:mm')
+        console.log("DATA E HORA DO REGISTRO ENTRADA")
+        console.log(dataHoraRequisicao)
         if (id_evento_req.length > 5) {
             const resposta_consulta = await EventoRepository.findById(id_evento_req, '5')
             if (resposta_consulta.rowCount == 0) {
