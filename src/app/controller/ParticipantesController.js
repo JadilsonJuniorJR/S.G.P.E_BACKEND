@@ -34,7 +34,7 @@ class ParticipanteController {
         const campus_req = req.body.dados.campus;
         const email_req = req.body.dados.email;
         // const dataHoraRequisicao = new Date().toLocaleString('pt-BR', { day: '2-digit', month: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' })
-        const dataHoraRequisicao = moment().tz('America/Sao_Paulo').format('DD-MM-YYYY HH:mm')
+        const dataHoraRequisicao = moment().tz('America/Sao_Paulo').format('YYYY-MM-DD HH:mm')
         console.log("DATA E HORA DO REGISTRO ENTRADA")
         console.log(dataHoraRequisicao)
         if (id_evento_req.length > 5) {
