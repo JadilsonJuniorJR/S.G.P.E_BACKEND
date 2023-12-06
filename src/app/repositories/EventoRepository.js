@@ -46,7 +46,7 @@ class EventoRepository {
 
     // Atualizar 
     update() {
-        sql= "UPDATE evento SET id_hash = ENCODE(DIGEST(CAST(id_evento AS TEXT), 'sha256'), 'hex');"
+       const sql= "UPDATE evento SET id_hash = ENCODE(DIGEST(CAST(id_evento AS TEXT), 'sha256'), 'hex');"
         return consulta(sql, '', 'Não foi possível Atualizar!')
         
     }
