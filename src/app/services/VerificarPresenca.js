@@ -56,7 +56,7 @@ class VerificarPresenca {
         console.log('Entrada Participante')
         console.log(entrada_participante[0])
         console.log(entrada_participante)
-        console.log(moment(entrada_participante[0],'YYYY-MM-DD'))
+        console.log(moment(entrada_participante[0],'YYYY-MM-DD').format('YYYY-MM-DD'))
         console.log('Entrada Evento')
         console.log(entrada_evento)
         console.log('')
