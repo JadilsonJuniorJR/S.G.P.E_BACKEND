@@ -12,9 +12,9 @@ class QrcodeController {
     console.log(hash)
     let url
     if(opc == 1){
-      url = `https://master--magenta-squirrel-060088.netlify.app/inicio/inscricao_participante`
+      url = `https://sgpe.netlify.app/inicio/inscricao_participante`
     }else{
-      url = `https://master--magenta-squirrel-060088.netlify.app/inicio/confirmacao_participante`
+      url = `https://sgpe.netlify.netlify.app/inicio/confirmacao_participante`
     }
 
     const combinedData = `${url}?id=${hash}`;
