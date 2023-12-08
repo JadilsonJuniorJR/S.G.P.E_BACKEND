@@ -41,7 +41,7 @@ class ListarEvento {
             const csv = json2csvParser.parse(resposta);
 
             // Criar um Buffer com a codificação UTF-8
-            const csvBuffer = Buffer.from('\ufeff' + csv, 'utf-8');
+            const csvBuffer = Buffer.from('\uFEFF' + csv, 'utf-8');
 
             res.setHeader('Content-Type', 'text/csv; charset=utf-8');
             res.send(csvBuffer)
