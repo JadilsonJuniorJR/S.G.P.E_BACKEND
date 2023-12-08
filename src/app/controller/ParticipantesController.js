@@ -91,7 +91,7 @@ class ParticipanteController {
             await ParticipanteRepository.update(nome_req, matricula_req, dataHoraRequisicao, validar_participacao)
             let nova_resposta_consulta = await ParticipanteRepository.findById(nome_req, matricula_req)
             await VerificarPresenca.verificar(nova_resposta_consulta)
-            res.status(200).send("USUARIO CADASTRADO NO SISTEMA")
+            res.status(200).send("USUARIO CADASTRADO NO SISTEMA") 
         }
     }
 

@@ -39,7 +39,7 @@ class ListarEvento {
             // Criando o objeto de Coversão e convertendo os JSON em CSV
             const json2csvParser = new converterJSON.Parser();
             const csv = json2csvParser.parse(resposta);
-            res.setHeader('Content-Type', 'text/csv');
+            res.setHeader('Content-Type', 'text/csv; charset=utf-8');
             res.send(csv)
             res.status(200)
         } catch (error) {
