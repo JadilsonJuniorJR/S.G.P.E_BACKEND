@@ -14,9 +14,9 @@ class ListarEvento {
         console.log(id_req)
         console.log(opc_req)
         try {
-            const resposta = await EventoRepository.findById(id_req,opc_req)
+            const resposta = await EventoRepository.findById(id_req, opc_req)
             console.log(resposta)
-            
+
             const json2csvParser = new converterJSON.Parser();
             const csv = json2csvParser.parse(resposta);
             res.setHeader('Content-Type', 'text/csv');
@@ -34,13 +34,17 @@ class ListarEvento {
         try {
             // Realizando a Requisição dos Dados
             // const resposta = await ParticipanteRepository.findAll(req, res)
-            const resposta = await EventoRepository.findById(id_req,opc_req)
+            const resposta = await EventoRepository.findById(id_req, opc_req)
             console.log(resposta)
             // Criando o objeto de Coversão e convertendo os JSON em CSV
             const json2csvParser = new converterJSON.Parser();
             const csv = json2csvParser.parse(resposta);
+
+            // Criar um Buffer com a codificação UTF-8
+            const csvBuffer = Buffer.from('\ufeff' + csv, 'utf-8');
+
             res.setHeader('Content-Type', 'text/csv; charset=utf-8');
-            res.send(csv)
+            res.send(csvBuffer)
             res.status(200)
         } catch (error) {
             res.status(404).json(error)
