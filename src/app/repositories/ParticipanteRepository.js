@@ -32,28 +32,25 @@ class ParticipanteRepository {
     }
 
     // Procurando Usuario Especifico
-    // findById(nome_req, matricula_req) {
-    findById(matricula_req) {
-        const sql = "SELECT * FROM participante WHERE matricula =$1"
-        return consulta(sql, [matricula_req], 'Não foi possivel Localizar')
+    findById(nome_req, matricula_req) {
+        const sql = "SELECT * FROM participante WHERE nome_participante=$1 and matricula =$2"
+        return consulta(sql, [nome_req, matricula_req], 'Não foi possivel Localizar')
     }
 
     // Atualizando Saida do usuario
     // update(nome_req, matricula_req, dataHoraRequisicao,validar_participacao) {
-    update(matricula_req, dataHoraRequisicao, validar_participacao) {
+    update(nome_req, matricula_req, dataHoraRequisicao, validar_participacao) {
         console.log('DENTRO DO UPDATE')
         // CASO O PARTICIPANTE A VALIDAÇÃO DO PARTICIPANTE SEJA VERDADEIRA ATUALIZAR O CAMPO PARTICIPAÇÃO
         if (validar_participacao) {
             console.log("PARTICIPAÇAO VALIDADA")
-            // console.log( nome_req, matricula_req, dataHoraRequisicao,validar_participacao)
-            console.log(matricula_req, dataHoraRequisicao, validar_participacao)
-            const sql_inserir_participante = "UPDATE participante SET participacao = $2 WHERE  matricula = $1"
-            return consulta(sql_inserir_participante, [matricula_req, validar_participacao], 'Não foi possivel Atualizar')
+            console.log(nome_req, matricula_req, dataHoraRequisicao, validar_participacao)
+            const sql_inserir_participante = "UPDATE participante SET participacao = $3 WHERE nome_participante = $1 and matricula = $2"
+            return consulta(sql_inserir_participante, [nome_req, matricula_req, validar_participacao], 'Não foi possivel Atualizar')
         } else {
-            //    console.log( nome_req, matricula_req, dataHoraRequisicao,validar_participacao)
-            console.log(matricula_req, dataHoraRequisicao, validar_participacao)
-            const sql_inserir_participante = "UPDATE participante SET participacao = $2, registro_saida = $3 WHERE matricula = $1"
-            return consulta(sql_inserir_participante, [matricula_req, validar_participacao, dataHoraRequisicao], 'Não foi possivel Atualizar')
+            console.log(nome_req, matricula_req, dataHoraRequisicao, validar_participacao)
+            const sql_inserir_participante = "UPDATE participante SET participacao = $3, registro_saida = $4 WHERE nome_participante = $1 and matricula = $2"
+            return consulta(sql_inserir_participante, [nome_req, matricula_req, validar_participacao, dataHoraRequisicao], 'Não foi possivel Atualizar')
         }
 
     }
