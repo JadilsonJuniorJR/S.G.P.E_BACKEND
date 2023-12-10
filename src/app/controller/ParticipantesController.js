@@ -63,10 +63,16 @@ class ParticipanteController {
 
         let dataHoraRequisicao = moment().tz('America/Sao_Paulo').format('YYYY-MM-DD HH:mm')
         // const dataHoraRequisicao = new Date().toLocaleString('pt-BR', { day: '2-digit', month: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' })
-        const nome_req = req.params.nome;
+        
+        // const nome_req = req.params.nome;
+
         const matricula_req = req.params.matricula;
         console.log(dataHoraRequisicao)
-        let resposta_consulta = await ParticipanteRepository.findById(nome_req, matricula_req)
+        
+        // let resposta_consulta = await ParticipanteRepository.findById(nome_req, matricula_req)
+
+        let resposta_consulta = await ParticipanteRepository.findById(matricula_req)
+
         let validar_participacao = false
         console.log("Resposta Consulta")
         console.log(resposta_consulta[0])
